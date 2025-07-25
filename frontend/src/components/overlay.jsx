@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from '../context/LocationContext';
 
 // --- SVG Icon Components for the Overlay ---
 
@@ -87,8 +88,9 @@ const otherCities = [
   "Kakinada", "Amalapuram", "Narasapuram", "Palakollu", "Tanuku", "Sattenapalle", "Markapur", "Vinukonda"
 ];
 
-const LocationOverlay = ({ isOpen, onClose, onCitySelect }) => {
+const LocationOverlay = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const { isOverlayOpen: isOpen, setIsOverlayOpen: setIsOpen, handleCitySelect } = useLocation();
 
     // Filter cities based on search term
     const filteredCities = otherCities.filter(city =>
@@ -99,11 +101,11 @@ const LocationOverlay = ({ isOpen, onClose, onCitySelect }) => {
         <>
             {/* Black overlay covers the whole page, including behind the navbar */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black opacity-40 z-40"></div>
+                <div className="fixed inset-0 bg-black opacity-40 z-[1000]"></div>
             )}
             {/* Modal content, positioned below navbar */}
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex justify-center">
+                <div className="fixed inset-0 z-[1100] flex justify-center">
                     <div
                         className="w-full max-w-4xl mx-2 sm:mx-auto bg-white rounded-2xl shadow-xl"
                         onClick={e => e.stopPropagation()}
@@ -115,7 +117,7 @@ const LocationOverlay = ({ isOpen, onClose, onCitySelect }) => {
                     >
                         <div className="flex justify-between items-center mb-10 p-2 border-b border-gray-200" style={{marginBottom: 7, padding: 7}}>
                             <h2 className="text-2xl font-bold text-gray-800" style={{margin: 3, padding: 2}}>Select your Location</h2>
-                            <button onClick={onClose} className="text-gray-500 hover:text-gray-800" style={{marginLeft: 7, padding: 5  }}>
+                            <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-gray-800" style={{marginLeft: 7, padding: 5  }}>
                                 <CloseIcon />
                             </button>
                         </div>
@@ -142,7 +144,7 @@ const LocationOverlay = ({ isOpen, onClose, onCitySelect }) => {
                             <h3 className="text-sm font-semibold text-gray-500  uppercase tracking-wide " style={{marginBottom: 5, paddingLeft: 4}}>Metro Cities</h3>
                             <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-0 text-center">
                                 {metroCities.map(cityObj => (
-                                    <div key={cityObj.name} onClick={() => onCitySelect(cityObj.name)} className="cursor-pointer group" style={{margin: 4}}>
+                                    <div key={cityObj.name} onClick={() => handleCitySelect(cityObj.name)} className="cursor-pointer group" style={{margin: 4}}>
                                         <div className="bg-gray-100 rounded-lg mb-2 group-hover:bg-cyan-100 transition-colors flex items-center justify-center w-19 h-19  overflow-hidden" style={{marginBottom: 2, padding: 0}}>
                                             {/* City-specific Icon */}
                                             {React.cloneElement(cityObj.icon, { className: "w-full h-full object-contain " } )}
@@ -163,7 +165,7 @@ const LocationOverlay = ({ isOpen, onClose, onCitySelect }) => {
                                 }}
                             >
                                 {filteredCities.map(city => (
-                                    <p key={city} onClick={() => onCitySelect(city)} className="text-gray-600 hover:text-cyan-600 cursor-pointer text-base rounded transition-colors duration-150" style={{ marginBottom: 0, padding: 0 }}>{city}</p>
+                                    <p key={city} onClick={() => handleCitySelect(city)} className="text-gray-600 hover:text-cyan-600 cursor-pointer text-base rounded transition-colors duration-150" style={{ marginBottom: 0, padding: 0 }}>{city}</p>
                                 ))}
                             </div>
                         </div>
