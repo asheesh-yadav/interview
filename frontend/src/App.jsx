@@ -10,7 +10,7 @@ import { LocationProvider } from './context/LocationContext';
 
 export default function App() {
   return (
-    <LocationProvider>
+    <LocationProvider>  
       <Router>
         <Navbar />
         <Topbar />

@@ -330,8 +330,8 @@ const whyChooseFeatures2 = [
 export default function ServicesShowcase() {
   const [selectedCategory, setSelectedCategory] = useState('Full Body Checkup');
   return (
-    <section style={{ background: '#f8fafc', padding: '48px 0', fontFamily: 'sans-serif' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 16px' }}>
+    <section style={{ background: '#f8fafc', padding: '32px 0', fontFamily: 'sans-serif', minHeight: '100vh' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 12px' }}>
         
         
         {/* Top horizontal scrollable row */}
@@ -362,26 +362,41 @@ export default function ServicesShowcase() {
         `}</style>
 
         {/* Bottom two info cards */}
-        <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, maxWidth: 1100, marginLeft: 'auto', marginRight: 'auto' }}>
-          {/* Responsive: two columns on large screens */}
-          <div style={{
-            background: '#fff',
-            padding: '32px',
-            borderRadius: 20,
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 24,
-            border: '1px solid#e5e5e5',
-            boxSizing: 'border-box',
-          }}>
+        <div
+          style={{
+            marginTop: 48,
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 32,
+            maxWidth: 1100,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
+          className="info-cards-responsive"
+        >
+          {/* Unlock Your Health Score Card */}
+          <div
+            style={{
+              background: '#fff',
+              padding: '32px',
+              borderRadius: 20,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 24,
+              border: '1px solid #e5e5e5',
+              boxSizing: 'border-box',
+              minWidth: 0,
+              width: '100%',
+            }}
+          >
             <div style={{ flexShrink: 0 }}>
               <div style={{ width: 64, height: 64, background: '#fef3c7', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <HeartPulse size={32} color={'#eab308'} />
               </div>
             </div>
-            <div style={{ textAlign: 'left' }}>
-              <h3 style={{ fontSize: 22, fontWeight: 700, color: '#1e293b', margin: 0 }}>Unlock Your Health Score with HealthKarma!</h3>
+            <div style={{ textAlign: 'left', minWidth: 0, width: '100%' }}>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: '#1e293b', margin: 0, wordBreak: 'break-word' }}>Unlock Your Health Score with HealthKarma!</h3>
               <p style={{ color: '#64748b', margin: '12px 0 0 0', fontSize: 15 }}>Uncover potential health risks and get custom test recommendation based on your lifestyle and habits.</p>
               <button style={{ marginTop: 16, background: '#f97316', color: '#fff', fontWeight: 600, padding: '12px 24px', borderRadius: 14, boxShadow: '0 2px 6px rgba(0,0,0,0.04)', border: 'none', display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
                 <span>Check your health score</span>
@@ -389,24 +404,27 @@ export default function ServicesShowcase() {
               </button>
             </div>
           </div>
-
-          <div style={{
-            background: 'white',
-            padding: '10px',
-            borderRadius: 20,
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 24,
-            border: '2px solid#e5e5e5',
-            boxSizing: 'border-box',
-          }}>
-            {/* Blank space matching the icon size in the left card */}
+          {/* Government Panel Card */}
+          <div
+            style={{
+              background: 'white',
+              padding: '32px',
+              borderRadius: 20,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 24,
+              border: '2px solid #e5e5e5',
+              boxSizing: 'border-box',
+              minWidth: 0,
+              width: '100%',
+            }}
+          >
             <div style={{ flexShrink: 0 }}>
               <div style={{ width: 64, height: 64, background: 'transparent', borderRadius: '50%' }}></div>
             </div>
-            <div style={{ textAlign: 'left' }}>
-              <h3 style={{ fontSize: 22, fontWeight: 700, color: '#1e293b', margin: 0 }}>Healthians Now Empaneled for All Government Panel Tests</h3>
+            <div style={{ textAlign: 'left', minWidth: 0, width: '100%' }}>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: '#1e293b', margin: 0, wordBreak: 'break-word' }}>Healthians Now Empaneled for All Government Panel Tests</h3>
               <p style={{ color: '#64748b', margin: '12px 0 0 0', fontSize: 15 }}>Get tests done for in-service or retired government employees under CGHS, ECHS, or any other government panel.</p>
               <button style={{ marginTop: 16, background: '#fde047', color: '#1e293b', fontWeight: 700, padding: '12px 24px', borderRadius: 999, boxShadow: '0 2px 6px rgba(0,0,0,0.04)', border: 'none', display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
                 <Phone size={16} />
@@ -415,6 +433,37 @@ export default function ServicesShowcase() {
             </div>
           </div>
         </div>
+        <style>{`
+          @media (max-width: 900px) {
+            .info-cards-responsive {
+              grid-template-columns: 1fr !important;
+              gap: 20px !important;
+            }
+          }
+          @media (max-width: 600px) {
+            .info-cards-responsive {
+              grid-template-columns: 1fr !important;
+              gap: 14px !important;
+              margin-top: 24px !important;
+            }
+            .info-cards-responsive > div {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              padding: 18px !important;
+              gap: 14px !important;
+            }
+            .info-cards-responsive h3 {
+              font-size: 1.1rem !important;
+            }
+            .info-cards-responsive p {
+              font-size: 0.98rem !important;
+            }
+            .info-cards-responsive button {
+              width: 100% !important;
+              justify-content: center !important;
+            }
+          }
+        `}</style>
         {/* Why Trust Section */}
         <div className="whytrust-section">
           <div className="whytrust-title">
