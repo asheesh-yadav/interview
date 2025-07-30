@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import LocationOverlay from './overlay'; // Importing the new overlay component
-import Topbar from './Topbar';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useLocation } from '../context/LocationContext';
+
+
 // --- SVG Icon Components ---
 // Your icons are kept as they were.
 const LogoIcon = () => (
@@ -37,7 +39,6 @@ const ChevronDownIcon = ({ className = "w-4 h-4" }) => (
 );
 
 // --- New Location Display Component ---
-// This replaces the old dropdown. It just displays the city and opens the overlay on click.
 const LocationDisplay = ({ selectedCity, onLocationClick }) => (
     <button 
         onClick={onLocationClick} 
@@ -56,9 +57,9 @@ const LocationDisplay = ({ selectedCity, onLocationClick }) => (
 
 
 // --- Main Navbar Component (Updated) ---
-// It now receives props from the App component to handle location state.
-const Navbar = ({ selectedCity, onLocationClick }) => {
+const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { selectedCity, handleLocationClick } = useLocation();
     return (
         <nav className="bg-white shadow-sm w-full sticky top-0 z-50" style={{padding: '0 4%'}}>
             <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -73,14 +74,14 @@ const Navbar = ({ selectedCity, onLocationClick }) => {
                     <div className="flex-grow"></div>
                     {/* Right-aligned container for LocationDisplay and menu/hamburger */}
                     <div className="flex items-center gap-x-4">
-                        <LocationDisplay selectedCity={selectedCity} onLocationClick={onLocationClick} />
+                        <LocationDisplay selectedCity={selectedCity} onLocationClick={handleLocationClick} />
                         {/* Desktop menu, hidden on mobile/tablet */}
                         <div className="hidden lg:flex items-center gap-x-8">
                             <div className="h-8 border-l border-gray-300"></div>
-                            <a href="#" className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                            <Link to="/login" className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200">
                                 <UserIcon className="w-6 h-6 text-gray-400" />
                                 <span className="ml-2 font-semibold text-sm">Login/Sign up</span>
-                            </a>
+                            </Link>
                             <div className="h-8 border-l border-gray-300"></div>
                             <div className="flex items-center text-gray-600">
                                 <PhoneIcon className="w-6 h-6 text-gray-400" />
@@ -114,32 +115,4 @@ const Navbar = ({ selectedCity, onLocationClick }) => {
     );
 };
 
-
-// --- App Component (Updated to manage state) ---
-// This is now the main controlling component for the page.
-export default function App() {
-  const [selectedCity, setSelectedCity] = useState('Gurgaon');
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-
-  const handleCitySelect = (city) => {
-      setSelectedCity(city);
-      setIsOverlayOpen(false);
-  };
-
-  return (
-    <div className="bg-gray-50 font-sans">
-      <Navbar 
-        selectedCity={selectedCity}
-        onLocationClick={() => setIsOverlayOpen(true)}
-      />
-      
-      <LocationOverlay 
-        isOpen={isOverlayOpen}
-        onClose={() => setIsOverlayOpen(false)}
-        onCitySelect={handleCitySelect}
-      />
-
-      <Topbar />  
-    </div>
-  );
-}
+export default Navbar;
