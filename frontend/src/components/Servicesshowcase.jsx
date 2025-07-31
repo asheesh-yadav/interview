@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Servicesshowcase.css';
+import { Link } from 'react-router-dom';
 import { HeartPulse, Award, Phone, ArrowRight } from 'lucide-react';
 
 // Data for the top service cards. Using an array makes it easy to manage.
@@ -564,9 +565,12 @@ export default function ServicesShowcase() {
               ))}
             </Swiper>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <button className="checkup-slider-viewall">
-                View All Full Body Checkup packages
-              </button>
+              <Link to="/healthpackage">
+                <button className="checkup-slider-viewall">
+                  View All Full Body Checkup packages
+                </button>
+              </Link>
+
             </div>
           </div>
         </div>

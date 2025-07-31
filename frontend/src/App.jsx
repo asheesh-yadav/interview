@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import Overlay from './components/overlay';
 import { LocationProvider } from './context/LocationContext';
+import HealthPackage  from './pages/HealthPackage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/healthpackage" element={<HealthPackage />} />
           {/* You can add more routes here in the future */}
         </Routes>
         <Footer />

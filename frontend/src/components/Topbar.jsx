@@ -16,7 +16,7 @@ function Topbar() {
   return (
     <header className="bg-white shadow-sm">
       {isMobile ? (
-        <div className="flex justify-center items-center py-3 px-2 w-full">
+        <div className="flex justify-center items-center py-1 px-1 w-full">
           <div className="flex flex-row w-full max-w-xl border border-cyan-300 rounded-xl overflow-hidden bg-white" style={{margin: '0 auto'}}>
             <input
               type="text"
