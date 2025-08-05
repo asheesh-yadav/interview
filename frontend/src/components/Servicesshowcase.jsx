@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import './Servicesshowcase.css';
 import { Link } from 'react-router-dom';
 import { HeartPulse, Award, Phone, ArrowRight } from 'lucide-react';
+import CallbackModal from '../pages/getcall'; 
 
 // Data for the top service cards. Using an array makes it easy to manage.
 const serviceCategories = [
@@ -330,6 +331,7 @@ const whyChooseFeatures2 = [
 // The main component that you will export
 export default function ServicesShowcase() {
   const [selectedCategory, setSelectedCategory] = useState('Full Body Checkup');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section style={{ background: '#f8fafc', padding: '32px 0', fontFamily: 'sans-serif', minHeight: '100vh' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 12px' }}>
@@ -556,9 +558,14 @@ export default function ServicesShowcase() {
                         <div className="checkup-slider-card-price">₹{pkg.price} <span className="checkup-slider-card-oldprice">₹{pkg.oldPrice}</span></div>
                         <div className="checkup-slider-card-perperson">₹{pkg.perPerson} per person</div>
                       </div>
-                      <button className="checkup-slider-card-book">
-                        Book Now <ArrowRight size={18} />
-                      </button>
+                      <button 
+                onClick={() => setIsModalOpen(true)} 
+                style={{ background: 'blue', color: 'white', border: 'none', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' ,borderRadius: '8px', fontWeight: 'bold' }}
+            >
+                Book now
+            </button>
+            
+                      
                     </div>
                   </div>
                 </SwiperSlide>
@@ -620,9 +627,11 @@ export default function ServicesShowcase() {
               ))}
             </Swiper>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Link to="/scanpage">
               <button className="checkup-slider-viewall">
                 View All
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -658,9 +667,11 @@ export default function ServicesShowcase() {
               ))}
             </Swiper>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Link to="/riskareas">
               <button className="checkup-slider-viewall">
                 View All
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -940,6 +951,7 @@ export default function ServicesShowcase() {
           </Swiper>
         </div>
       </div>
+      <CallbackModal show={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

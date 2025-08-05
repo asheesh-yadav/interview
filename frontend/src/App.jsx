@@ -8,6 +8,10 @@ import LoginPage from './pages/LoginPage';
 import Overlay from './components/overlay';
 import { LocationProvider } from './context/LocationContext';
 import HealthPackage  from './pages/HealthPackage';
+import ScanPage from './pages/ScanPage';
+import RiskAreas from './pages/Riskarea';
+import Offers from './Offers/offer';
+import Genetic from './Genetic Testing/Geneticmain.jsx';
 
 export default function App() {
   return (
@@ -20,7 +24,10 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/healthpackage" element={<HealthPackage />} />
-          {/* You can add more routes here in the future */}
+          <Route path="/scanpage" element={<ScanPage />} />
+          <Route path="/riskareas" element={<RiskAreas />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/genetic" element={<Genetic />} />
         </Routes>
         <Footer />
       </Router>

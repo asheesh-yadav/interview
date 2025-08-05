@@ -1,0 +1,232 @@
+/*
+File: App.css
+Description: This file contains all the styles for the App.jsx component.
+*/
+
+/* General Body and Font Styles */
+body {
+    margin: 0;
+    font-family: sans-serif; /* A common sans-serif font stack */
+}
+
+.app-wrapper {
+    background-color: #f7fafc; /* bg-gray-100 */
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Media queries for container max-width */
+@media (min-width: 640px) { .container { max-width: 640px; } }
+@media (min-width: 768px) { .container { max-width: 768px; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; } }
+@media (min-width: 1280px) { .container { max-width: 1280px; } }
+
+/* Header Styles */
+.header {
+    background-color: #ffffff; /* bg-white */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px; /* py-4 */
+    padding-bottom: 10px; /* py-4 *m; /* py-4 */
+}
+
+  .logo {
+    height: 3.2rem;
+    max-width: 220px;
+}
+
+  .expert-callout {
+    font-size: 1.5rem;
+    color: #222;
+    font-weight: 700;
+}
+
+  .expert-number {
+    color: #004E9B;
+    font-weight: 800;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background-image: url('https://cdn2.healthians.com/img/genetic/banner-img.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; /* text-white */
+    overflow: hidden;
+}
+
+.hero-content-wrapper {
+    position: relative;
+    z-index: 10;
+    padding-top: 1rem;
+    padding-bottom: 1.2rem;
+}
+
+.hero-text-container {
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 4px 0;
+}
+
+.hero-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.hero-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.check-icon {
+    height: 1.1rem;
+    width: 1.1rem;
+    margin-right: 0.4rem;
+    flex-shrink: 0;
+}
+
+  .book-now-button {
+    margin-top: 1.2rem;
+    
+    background-color: #F16334;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+    background-color: #dd5a2c; /* hover:bg-orange-600 */
+}
+
+/* Insights Section */
+.insights-section-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    line-height: 0;
+    background-image: linear-gradient(to top, #004E9B, transparent);
+    padding-bottom: 1.2rem;
+}
+.insights-section-wrapper img {
+    width: 100%; /* Makes the image fill the container's width */
+    height: auto; /* Maintains the image's aspect ratio */
+}
+
+/* Meet Self Section */
+.meet-self-section {
+    background-color: #FDF6E2;
+    padding: 2rem 0;
+}
+
+.meet-self-container {
+    text-align: center;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-style: italic;
+}
+
+.meet-self-subtitle,
+.meet-self-title,
+.meet-self-description {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-style: italic;
+}
+
+.meet-self-subtitle {
+    font-size: 2.2rem;    /* Increased from 1.875rem */
+    font-weight: 800;
+    color: #028CA9;
+    margin: 0;
+}
+
+.meet-self-title {
+    font-size: 3.5rem;    /* Increased from 3rem */
+    font-weight: 800;
+    color: #028CA9;
+    margin-top: 0.1rem;
+}
+
+.meet-self-description {
+    margin-top: 0.4rem;
+    font-size: 1.25rem;   /* Increased from 1rem */
+    color: #4a5568;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .logo {
+        height: 3.2rem;
+        max-width: 260px;
+    }
+    .expert-callout {
+        font-size: 1.5rem;
+    }
+    .hero-content-wrapper {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 6rem;
+    }
+    .hero-text-container {
+        width: 50%; /* md:w-1/2 */
+    }
+    .hero-title {
+        font-size: 2.6rem;
+    }
+    .insights-container {
+        flex-direction: row;
+    }
+    .insights-title-group {
+        text-align: left;
+        margin-bottom: 0;
+        margin-right: 0.6rem;
+    }
+    .insights-more {
+        text-align: left;
+        margin-top: 0;
+        margin-left: 0.6rem;
+    }
+    .hexagon-wrapper {
+        margin: 0 0.2rem;
+    }
+    .hexagon-icon {
+        width: 4.2rem;
+        height: 5rem;
+    }
+    .meet-self-section {
+        padding: 3rem 0;
+    }
+    .meet-self-subtitle, .meet-self-title {
+        font-size: 2.5rem; /* Increased for larger screens */
+    }
+    .meet-self-description {
+        font-size: 1.3rem;
+    }
+}
+

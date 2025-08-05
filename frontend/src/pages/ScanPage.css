@@ -1,0 +1,282 @@
+.radiologyBannerSection {
+    background-image: url("https://cdn4.healthians.com/img/radiology/banner-bg-1366.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.sliderContainer {
+    width: 100%;
+    padding: 40px 0 0 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.slidesWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.slideActive {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slideContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.slideContentH1 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    max-width: 450px;
+    line-height: 1.3;
+}
+
+.price {
+    margin-top: 15px;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.priceOriginal {
+    text-decoration: line-through;
+    font-weight: 400;
+    color: #888888;
+    margin-right: 15px;
+    font-size: 28px;
+}
+
+.priceCurrent {
+    color: #00a09d;
+}
+
+.benefitsGrid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    gap: 20px;
+}
+
+.benefitItem {
+    display: flex;
+    align-items: center;
+}
+
+.benefitItemImg {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.benefitItemP {
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.taxBenefit {
+    width: 70px;
+    height: auto;
+}
+
+.slideImageContainer {
+    position: absolute;
+    right: -50%;
+    top: 150px;
+    width: 280px;
+    height: 280px;
+    z-index: 3;
+}
+
+.slideImageClipper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+}
+
+.slideImageClipperImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slideImageFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.sliderPagination {
+    position: absolute;
+    bottom: 60px;
+    left: 100px;
+    display: flex;
+    gap: 12px;
+    z-index: 5;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #b2dfde;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dotActive {
+    background-color: #00a09d;
+}
+
+.formContainer {
+    margin-top: 40px;
+    width: 300px;
+    height: 80%;
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formContainerH2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #333;
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+.inputGroup {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.inputGroupImg {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}
+
+.inputGroupInput {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0 15px 0 50px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.inputGroupSelect {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0 15px 0 50px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #fff;
+}
+
+.uploadGroup {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.fileName {
+    color: #888888;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+}
+
+.fileInput {
+    display: none;
+}
+
+.chooseFileBtn {
+    background-color: #f5f5f5;
+    border: none;
+    border-left: 1px solid #e0e0e0;
+    padding: 0 20px;
+    height: 100%;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.tncGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.tncCheckbox {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.tncLabel {
+    font-size: 12px;
+    color: #888888;
+    cursor: pointer;
+}
+
+.submitBtn {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f47955;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

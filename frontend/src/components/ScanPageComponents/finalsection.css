@@ -1,0 +1,246 @@
+/* InfoSection.css */
+
+:root {
+    --primary-color: #00a09d;   
+    --text-color-dark: #3c3c3c;
+    --text-color-light: #6c757d;
+    --border-color: #e0e0e0;
+    --bg-color-light-gray: #f8f9fa;
+    --section-bg-color: #fff;
+}
+
+.info-section-wrapper {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color-light-gray);
+    padding: 50px 0;
+}
+
+.info-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info-section {
+    background-color: var(--section-bg-color);
+    padding: 50px 0;
+    margin-bottom: 20px;
+}
+.info-section:last-of-type {
+    margin-bottom: 0;
+}
+
+
+/* Make all main section headings bolder */
+.info-section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 800;
+    font-size: 2.1rem;
+    letter-spacing: 0.5px;
+}
+
+.info-title-bordered {
+    display: inline-block;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px;
+    padding: 8px 30px;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+}
+
+/* --- How to Book Section --- */
+.booking-steps-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.booking-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 15px;
+}
+
+.booking-step-icon-wrapper {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 18px;
+    border: 2.5px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-step-icon {
+    width: 85px;
+    height: 85px;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.booking-step h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: var(--text-color-dark);
+}
+
+.booking-step p {
+    font-size: 14px;
+    color: var(--text-color-light);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.booking-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2300A09D' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+/* --- Why Healthians Section --- */
+.why-healthians-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 30px;
+    text-align: center;
+}
+
+.why-item-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.why-item p {
+    font-size: 15px;
+    color: var(--text-color-dark);
+    font-weight: 700;
+    margin: 0;
+    padding: 0 10px;
+}
+
+
+/* --- FAQ Section --- */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+        
+}
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: #fff;
+    font-weight: 500;
+}
+.faq-question .icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+.faq-item.open .faq-question .icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    background-color: #fff;
+    color: var(--text-color-light);
+    font-size: 15px;
+    line-height: 1.7;
+}
+.faq-item.open .faq-answer {
+    max-height: 300px; /* Adjust if content is longer */
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* --- Footer Text Section --- */
+.footer-text-section {
+    background-color: transparent;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+.footer-text-content {
+    color: var(--text-color-light);
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: justify;
+}
+.footer-text-content h4 {
+    color: var(--text-color-dark);
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .why-healthians-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-steps-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .booking-step {
+        width: 100%;
+        max-width: 350px;
+    }
+    .booking-step:not(:last-child)::after {
+        display: none; /* Hide connecting lines on mobile */
+    }
+    .why-healthians-grid {
+        gap: 40px 20px;
+    }
+    .why-item-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-title-bordered {
+        font-size: 18px;
+    }
+    .why-healthians-grid {
+        grid-template-columns: 1fr;
+    }
+}

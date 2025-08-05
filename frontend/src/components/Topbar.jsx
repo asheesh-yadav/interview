@@ -16,7 +16,7 @@ function Topbar() {
   return (
     <header className="bg-white shadow-sm">
       {isMobile ? (
-        <div className="flex justify-center items-center py-1 px-1 w-full">
+        <div className="flex justify-center items-center py-2 px-1 w-full">
           <div className="flex flex-row w-full max-w-xl border border-cyan-300 rounded-xl overflow-hidden bg-white" style={{margin: '0 auto'}}>
             <input
               type="text"
@@ -80,7 +80,7 @@ const navItems = [
       { name: 'Ultrasound', href: '#ultrasound' },
     ],
   },
-  { name: 'Genetic Testing', href: '#genetic' },
+  { name: 'Genetic Testing', href: '/genetic' },
   {
     name: 'Doctor Consultation',
     href: '#consultation',
@@ -108,7 +108,7 @@ const navItems = [
         { name: 'Mental Wellness', href: '#wellness' },
     ]
   },
-  { name: 'Offers', href: '#offers' },
+  { name: 'Offers', href: '/offers' },
 ];
 
 // Add mega menu data for Blood Test
@@ -228,8 +228,8 @@ const megaMenus = {
 
 // The Secondary Navbar Component
 function SecondaryNavbar() {
-  const hoverBg = 'group-hover:bg-[#009688]';
-  const hoverText = 'group-hover:text-white';
+  const hoverBg = 'hover:bg-[#009688] group-hover:bg-[#009688]';
+  const hoverText = 'hover:text-white group-hover:text-white';
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(null);
   const [activeCategory, setActiveCategory] = React.useState(0);
   const [hoveredNavIdx, setHoveredNavIdx] = React.useState(null);
@@ -245,22 +245,28 @@ function SecondaryNavbar() {
   const openNavItem = navItems.find(item => item.name === megaMenuOpen);
 
   return (
-    <nav className="bg-white w-full border-b border-gray-200 flex justify-center min-h-[64px] relative" style={{boxShadow: '0 2px 6px rgba(0,0,0,0.03)', paddingTop: 10, paddingBottom: 10, marginTop: 2, marginBottom: 2, position: 'relative', zIndex: 20}}>
-      <div style={{width: '100%', maxWidth: 1200, margin: '0 auto', position: 'relative'}}>
-        <ul className="desktop-navbar-list flex items-center gap-5 md:gap-8 lg:gap-14 flex-wrap whitespace-nowrap px-2 md:px-6 lg:px-10" style={{width: '100%', margin: 0, padding: 0, justifyContent: 'center'}}>
+    <nav className={`bg-white w-full border-b border-gray-200 min-h-[40px] relative topbar-nav`}
+      style={{boxShadow: '0 2px 6px rgba(0,0,0,0.03)', position: 'relative', zIndex: 20}}>
+      <div style={{width: '100%', maxWidth: 1200, position: 'relative'}}>
+        <ul className="desktop-navbar-list flex items-center gap-3 md:gap-3 lg:gap-7 flex-wrap whitespace-nowrap" style={{width: '100%', margin: 0, paddingLeft: 20, boxSizing: 'border-box'}}>
           {navItems.map((item, navIdx) => (
             <li
               key={item.name}
-              className="relative group"
-              style={{marginTop: 2, marginBottom: 2, transition: 'background 0.2s'}}
+              className={`relative group nav-li${hoveredNavIdx === navIdx ? ' nav-li--hovered' : ''}`}
+              style={{
+                marginTop: 2,
+                marginBottom: 2,
+                transition: 'background 0.2s',
+                paddingLeft: 12,
+                paddingRight: 12,
+              }}
               onMouseEnter={() => {
+                setHoveredNavIdx(navIdx);
                 if (item.dropdown && megaMenus[item.name]) {
                   setMegaMenuOpen(item.name);
                   setActiveCategory(0);
-                  setHoveredNavIdx(navIdx);
                 } else {
                   setMegaMenuOpen(null);
-                  setHoveredNavIdx(null);
                 }
               }}
               onMouseLeave={() => {
@@ -270,7 +276,7 @@ function SecondaryNavbar() {
             >
               <a
                 href={item.href}
-                className={`flex items-center px-3 md:px-5 rounded-lg font-medium text-gray-700 transition-all duration-200 ease-in-out ${hoverBg} ${hoverText}`}
+                className={`flex items-center px-3 md:px-5 font-medium text-gray-700 transition-all duration-200 ease-in-out ${hoverBg} ${hoverText}`}
                 style={{
                   paddingTop: 7,
                   paddingBottom: 7,
@@ -278,8 +284,8 @@ function SecondaryNavbar() {
                   marginBottom: 1,
                   display: 'flex',
                   alignItems: 'center',
-                  background: megaMenuOpen === item.name && item.dropdown ? '#009688' : 'transparent',
-                  color: megaMenuOpen === item.name && item.dropdown ? '#fff' : '',
+                  background: hoveredNavIdx === navIdx ? '#009688' : (megaMenuOpen === item.name && item.dropdown ? '#009688' : 'transparent'),
+                  color: hoveredNavIdx === navIdx ? '#fff' : (megaMenuOpen === item.name && item.dropdown ? '#fff' : ''),
                   transition: 'background 0.2s, color 0.2s',
                 }}
               >
@@ -293,8 +299,15 @@ function SecondaryNavbar() {
         {/* Mega Menu rendered as a child of the nav container, not inside <li> */}
         {openNavItem && openNavItem.dropdown && megaMenus[openNavItem.name] && (
           <div
-            className="absolute left-0 top-full w-full bg-white rounded-b-lg shadow-2xl flex z-40 animate-fadein"
-            style={{minHeight: 320, border: '1px solid #e0e0e0', boxShadow: '0 8px 32px rgba(0,0,0,0.10)', padding: '18px 0 12px 0', maxWidth: '100%'}}
+            className={`absolute left-0 top-full w-full bg-white rounded-b-lg shadow-2xl flex z-40 animate-fadein${hoveredNavIdx !== null ? ' mega-menu--hovered' : ''}`}
+            style={{
+              minHeight: 320,
+              border: '1px solid #e0e0e0',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
+              padding: '18px 0 12px 0',
+              maxWidth: '100%',
+              borderTop: hoveredNavIdx !== null ? '4px solid #009688' : '1px solid #e0e0e0',
+            }}
             onMouseEnter={() => setMegaMenuOpen(openNavItem.name)}
             onMouseLeave={() => setMegaMenuOpen(null)}
           >
@@ -348,6 +361,20 @@ function SecondaryNavbar() {
         }
         .animate-fadein {
           animation: fadein 0.25s ease;
+        }
+        /* .topbar-nav--hovered removed: no border on navbar hover */
+        .mega-menu--hovered {
+          border-top: 4px solid #009688 !important;
+        }
+        .nav-li {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+        .nav-li:hover, .nav-li--hovered {
+          background: #009688 !important;
+        }
+        .nav-li:hover a, .nav-li--hovered a {
+          color: #fff !important;
         }
       `}</style>
     </nav>

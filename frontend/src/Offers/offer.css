@@ -1,0 +1,127 @@
+/* Using a common, clean font stack that closely resembles the one in the image */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+.offers-page-container {
+  /* Using the light grey background from your previous designs */
+  background-color: #f4f7fa; 
+  padding: 40px;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.offers-main-title {
+  text-align: center;
+  font-size: 2.2em; /* 34-36px approx */
+  font-weight: 700;
+  color: #333;
+  margin: 0 auto 40px auto;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* The decorative underline for the main title */
+.offers-main-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 70px;
+  height: 4px;
+  background-color: #48C9B0; /* The teal color from your other components */
+  border-radius: 2px;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px; /* Spacing between the cards */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.offer-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.offer-content {
+  padding: 20px 25px 25px 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-title {
+  font-size: 1.25em; /* Approx 20px */
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
+}
+
+.offer-description {
+  font-size: 0.9em; /* Approx 14px */
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1; /* Pushes the button down if content is short */
+}
+
+.offer-button-container {
+    margin-top: 20px;
+    text-align: right; /* Aligns button to the right */
+}
+
+.offer-button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 25px;
+  font-size: 0.95em;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.offer-button:hover {
+    opacity: 0.9;
+}
+
+/* Specific button styles */
+.btn-yellow {
+  background-color: #ffc107; /* Bright yellow */
+  color: #333; /* Darker text for readability on yellow */
+}
+
+.btn-teal {
+  background-color: #48C9B0; /* The familiar teal */
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .offers-grid {
+        grid-template-columns: 1fr; /* Stack cards into a single column */
+    }
+    .offers-page-container {
+        padding: 20px;
+    }
+}

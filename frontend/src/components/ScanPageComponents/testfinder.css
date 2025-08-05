@@ -1,0 +1,156 @@
+/* TestFinder.css */
+
+:root {
+    --primary-color: #00a09d; /* Ocean Green */
+    --text-color-dark: #3c3c3c;
+    --text-color-light: #6c757d;
+    --border-color: #e0e0e0;
+    --bg-color-light: #f8f9fa;
+    --city-hover-bg: rgba(255, 235, 59, 0.3); /* Transparent Light Yellow */
+}
+
+.test-finder-container {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.tf-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tf-section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tf-title-bordered {
+    display: inline-block;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px;
+    padding: 8px 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* --- Scan Centres Section --- */
+.scan-centres-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+.city-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--text-color-dark);
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.city-btn .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.city-btn:hover {
+    background-color: var(--city-hover-bg);
+    border-color: #fdd835;
+}
+
+
+/* --- Know Your Tests Section --- */
+.test-category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.test-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.test-card-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-bottom: 20px;
+}
+
+.test-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.test-link {
+    padding: 8px 15px;
+    background-color: var(--bg-color-light);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-color-light);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.test-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .scan-centres-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .scan-centres-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .scan-centres-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tf-title-bordered {
+        font-size: 18px;
+    }
+    .test-card-header {
+        font-size: 16px;
+    }
+    .test-link {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scan-centres-grid {
+        grid-template-columns: 1fr;
+    }
+}
