@@ -12,6 +12,9 @@ import ScanPage from './pages/ScanPage';
 import RiskAreas from './pages/Riskarea';
 import Offers from './Offers/offer';
 import Genetic from './Genetic Testing/Geneticmain.jsx';
+import DoctorConsultation from './pages/doctorconsultaion';
+import Herbved from './pages/herbved';
+
 
 export default function App() {
   return (
@@ -28,6 +31,8 @@ export default function App() {
           <Route path="/riskareas" element={<RiskAreas />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/genetic" element={<Genetic />} />
+          <Route path="/doctorconsultation" element={<DoctorConsultation />} />
+          <Route path="/herbved" element={<Herbved />} />
         </Routes>
         <Footer />
       </Router>

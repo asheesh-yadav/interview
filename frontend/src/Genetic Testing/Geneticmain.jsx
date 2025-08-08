@@ -3,24 +3,14 @@ import React from 'react';
 import './genetic.css'; 
 import BenefitsComponent from './benefits';
 import HealthiansGeneticTesting from './parameter';
+import HomePageSection from './finalsection';
 const CheckIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
 );
 
-// Component for the hexagonal insight icons
-const HexagonIcon = ({ bgColor, icon, title, subtitle }) => (
-    <div className="hexagon-wrapper">
-        <div className="hexagon-icon" style={{ backgroundColor: bgColor }}>
-            <div className="hexagon-content">
-                {icon}
-                <p className="hexagon-title">{title}</p>
-            </div>
-        </div>
-        <p className="hexagon-subtitle">{subtitle}</p>
-    </div>
-);
+
 
 // The main header component
 const Header = () => (
@@ -50,10 +40,10 @@ const HeroSection = () => {
     ];
 
     return (
-        <section className="hero-section">
+        <section className="hero-section1">
             <div className="hero-content-wrapper">
                 <div className="hero-text-container">
-                    <h1 className="hero-title">
+                    <h1 className="hero-title" style={{ color: '#ffffff' }}>
                         Uncover the secrets to good health hidden in your DNA.
                     </h1>
                     <ul className="hero-list">
@@ -104,6 +94,8 @@ export default function Genetic() {
                 <MeetSelfSection />
                 <BenefitsComponent />
                 <HealthiansGeneticTesting />
+                <HomePageSection />
+      
                     
             </main>
         </div>

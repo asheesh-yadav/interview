@@ -18,6 +18,7 @@ const serviceCategories = [
     bgColor: 'bg-cyan-50',
     imgSrc: 'https://placehold.co/100x100/34d3fa/ffffff?text=🩸',
     textColor: 'text-cyan-600',
+    link: '/healthpackage',
   },
   {
     title: 'X-Rays, Scans and MRI Tests',
@@ -25,6 +26,7 @@ const serviceCategories = [
     bgColor: 'bg-violet-50',
     imgSrc: 'https://placehold.co/100x100/a78bfa/ffffff?text=�',
     textColor: 'text-violet-600',
+    link: '/scanpage',
   },
   {
     title: 'Doctor & Diet Consultations',
@@ -32,6 +34,8 @@ const serviceCategories = [
     bgColor: 'bg-rose-50',
     imgSrc: 'https://placehold.co/100x100/f43f5e/ffffff?text=👨‍⚕️',
     textColor: 'text-rose-600',
+    link: '/doctorconsultation',
+
   },
   {
     title: 'Herbved+ Supplements',
@@ -39,6 +43,7 @@ const serviceCategories = [
     bgColor: 'bg-blue-50',
     imgSrc: 'https://placehold.co/100x100/60a5fa/ffffff?text=🌿',
     textColor: 'text-blue-600',
+    link: '/herbved',
   },
   {
     title: 'Genetic Testing',
@@ -46,6 +51,7 @@ const serviceCategories = [
     bgColor: 'bg-pink-50',
     imgSrc: 'https://placehold.co/100x100/f472b6/ffffff?text=🧬',
     textColor: 'text-pink-600',
+    link: '/genetic',
   },
   {
     title: 'Upload Prescription',
@@ -53,6 +59,7 @@ const serviceCategories = [
     bgColor: 'bg-indigo-50',
     imgSrc: 'https://placehold.co/100x100/818cf8/ffffff?text=📄',
     textColor: 'text-indigo-600',
+    link: '/login',
   },
 ];
 
@@ -192,7 +199,8 @@ const healthRiskSlides = [
 ];
 
 // Reusable component for the top service cards
-const ServiceCard = ({ title, discount, bgColor, imgSrc, textColor }) => (
+const ServiceCard = ({ title, discount, bgColor, imgSrc, textColor, link }) => (
+  <Link to={link} style={{ textDecoration: 'none' }}>
   <div
     style={{
       flex: '0 0 180px',
@@ -236,6 +244,7 @@ const ServiceCard = ({ title, discount, bgColor, imgSrc, textColor }) => (
     )}
     <h3 style={{ color: '#1e293b', fontWeight: 700, marginTop: 10, fontSize: 14, minHeight: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{title}</h3>
   </div>
+  </Link>
 );
 
 // Helper to convert Tailwind bgColor to hex

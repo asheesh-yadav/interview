@@ -1,0 +1,481 @@
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --teal-primary: #00b6bd;
+    --teal-dark: #00838f;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --background-light: #f7f9fa;
+    --border-color: #e0e0e0;
+    --beige-bg: #f5f5f0;
+}
+
+.healthians-page-container {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+.section-title, .section-title-left {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--teal-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.section-title-left {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .section-title, .section-title-left {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+    padding: 4rem 1rem;
+    background-color: var(--text-light);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 280px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+.testimonial-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-img {
+    transform: scale(1.05);
+}
+
+.testimonial-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.testimonial-card:hover .play-button {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.testimonial-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+}
+
+.testimonial-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.testimonial-content p {
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+    opacity: 0.9;
+    color: var(--text-light);
+}
+
+/* Testimonials Swiper Styles */
+.testimonials-swiper {
+    padding: 0 20px;
+}
+
+.testimonial-slide {
+    padding: 10px;
+}
+
+.swiper-pagination-testimonials {
+    position: static;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.swiper-pagination-testimonials .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    opacity: 1;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-testimonials .swiper-pagination-bullet-active {
+    background-color: var(--teal-primary);
+    transform: scale(1.2);
+}
+
+/* --- Teal Background Section (For Blog) --- */
+.teal-background-section {
+    background-color: var(--teal-primary);
+    padding: 4rem 0;
+    position: relative;
+}
+
+.teal-background-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--teal-primary) 0%, #00a0a8 100%);
+    opacity: 0.95;
+}
+
+/* --- Blog Section --- */
+.blog-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-section .section-title {
+    color: var(--text-light);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.blog-card {
+    background-color: var(--text-light);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 320px;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.blog-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 1.5rem;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    background: var(--text-light);
+}
+
+.blog-content p {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--text-dark);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Blog Swiper Styles */
+.blog-swiper {
+    padding: 0 20px;
+}
+
+.blog-slide {
+    padding: 10px;
+}
+
+.swiper-pagination-blog {
+    position: static;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.swiper-pagination-blog .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-blog .swiper-pagination-bullet-active {
+    background-color: var(--text-light);
+    transform: scale(1.2);
+}
+
+.swiper-nav-btn {
+    color: var(--text-light);
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+}
+
+.swiper-nav-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.swiper-nav-btn::after {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.swiper-button-prev-blog {
+    left: -25px;
+}
+
+.swiper-button-next-blog {
+    right: -25px;
+}
+
+@media (max-width: 1280px) {
+    .swiper-nav-btn {
+        display: none;
+    }
+}
+
+/* --- Why Healthians Section --- */
+.why-healthians-section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--beige-bg);
+    position: relative;
+}
+
+.why-healthians-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dna" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25,10 Q35,25 25,40 Q15,25 25,10" fill="none" stroke="%2300b6bd" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dna)"/></svg>');
+    opacity: 0.3;
+}
+
+.why-healthians-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.why-healthians-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.why-healthians-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--text-light);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-healthians-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.why-healthians-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    filter: hue-rotate(180deg) saturate(1.2);
+}
+
+.why-healthians-item p {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.highlight-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--teal-primary);
+    font-family: 'Georgia', serif;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 4rem 1rem;
+    background-color: var(--background-light);
+}
+
+.faq-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-item:hover {
+    background-color: rgba(0, 182, 189, 0.05);
+}
+
+.faq-question {
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.faq-question:hover {
+    color: var(--teal-primary);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--teal-primary);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+    padding: 0 1rem;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.faq-answer p {
+    margin: 0;
+    padding-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px; /* Increased for longer answers */
+    padding: 1rem;
+}
+
+.faq-item.open {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Footer --- */
+.thin-footer {
+    background-color: var(--teal-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+}
+
+.thin-footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .why-healthians-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .why-healthians-item {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .why-healthians-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .blog-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .testimonial-card {
+        height: 240px;
+    }
+}
