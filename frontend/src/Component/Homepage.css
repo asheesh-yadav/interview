@@ -1,0 +1,45 @@
+
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.employee-list {
+  list-style: none;
+  padding: 0;
+}
+
+.employee-item {
+  background: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease-in-out;
+}
+
+.employee-item:hover {
+  transform: scale(1.02);
+  border-color: #007bff;
+}
+
+.employee-item p {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.employee-item strong {
+  color: #000;
+}

@@ -1,6 +1,5 @@
 import express from 'express'
-import userRouter from './Routes/user.js'
-import adminRouter from './Routes/admin.js'
+import empRouter from './Routes/emp.js'
 import cors from 'cors'
 import mongoose from 'mongoose';
 
@@ -12,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const allowedOrigins = ['http://localhost:5173', ''];
                                                  
+
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)){
@@ -24,15 +24,14 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], 
 }));
 
-const MONGO_URI = process.env.MONGO_URI;
 mongoose.connect(MONGO_URI) 
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
 
 // API ROUTES
-app.use('/api/user', userRouter);
-app.use('/api/admin', adminRouter);
+app.use('/api/emp', empRouter);
+
 
     
 
