@@ -2,11 +2,15 @@ import express from 'express'
 import empRouter from './Routes/emp.js'
 import cors from 'cors'
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
+const MONGO_URI = process.env.MONGO_URI;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 
 const allowedOrigins = ['http://localhost:5173', ''];
@@ -20,6 +24,7 @@ app.use(cors({
             callback(new Error('Not allowed by CORS'));
         }
     },
+       credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
 }));

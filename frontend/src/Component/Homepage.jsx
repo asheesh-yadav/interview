@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-// import api from '../api';
-import axios from 'axios';
+import api from '../api';
+// import axios from 'axios';
 import "./Homepage.css"
 
 const Homepage = () => {
   const [emp,setEmp] = useState([]);
   const fetchData = async()=>{
     try{
-     const res =await axios.get("http://localhost:3000/api/emp");
+     const res =await api.get("/api/emp");
      console.log(res.data.data);
-     setEmp(res.data.data);
+      setEmp(res.data?.data || []);
     }catch(err){
       console.error("falied to fetch data");
     }
@@ -17,12 +17,14 @@ const Homepage = () => {
 
 useEffect(()=>{
   fetchData();
+  console.log("Env Test:", import.meta.env);
+  console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
 },[]);
 
   return (
    <div className="container">
       <h2>Employee List</h2>
-      {emp.length === 0 ? (
+      {!emp.length ? (
         <p>No employees found</p>
       ) : (
         <ul className="employee-list">
