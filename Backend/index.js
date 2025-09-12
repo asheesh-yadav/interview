@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-const allowedOrigins = ['http://localhost:5173', ''];
+const allowedOrigins = ['http://localhost:5173', 'https://interview-six-alpha.vercel.app'];
                                                  
 
 app.use(cors({
