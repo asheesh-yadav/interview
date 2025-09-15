@@ -1,5 +1,5 @@
 import express from "express";
-import { addEmp, getEmp } from "../Controller/emp.js";
+import { addEmp, deleteEmp, getEmp } from "../Controller/emp.js";
 
 
 
@@ -11,5 +11,7 @@ router.post('/add',addEmp);
 //get employee
 router.get('/',getEmp);
 
+//delete
+router.delete("/:id",deleteEmp);
 
 export default router;

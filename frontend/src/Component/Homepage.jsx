@@ -15,6 +15,23 @@ const Homepage = () => {
     }
   }
 
+   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this employee?")) return;
+
+    try {
+      const res = await api.delete(`/api/emp/${id}`);
+      if (res.data.success) {
+        alert("Employee deleted successfully!");
+        setEmp((prev) => prev.filter((employee) => employee._id !== id));
+      } else {
+        alert(res.data.message || "Failed to delete employee.");
+      }
+    } catch (err) {
+      console.error("Failed to delete employee", err);
+      alert("Something went wrong while deleting.");
+    }
+  };
+
 useEffect(()=>{
   fetchData();
   console.log("Env Test:", import.meta.env);
@@ -30,10 +47,17 @@ useEffect(()=>{
         <ul className="employee-list">
           {emp.map((employee) => (
             <li key={employee._id} className="employee-item">
+              <p><strong>Emp Id:</strong> {employee._id}</p>
               <p><strong>Name:</strong> {employee.name}</p>
               <p><strong>Email:</strong> {employee.email}</p>
               <p><strong>Position:</strong> {employee.position}</p>
               <p><strong>Salary:</strong> ₹{employee.salary}</p>
+               <button
+                onClick={() => handleDelete(employee._id)}
+                className="delete-btn"
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>

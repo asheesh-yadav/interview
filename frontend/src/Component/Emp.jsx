@@ -19,18 +19,39 @@ const navigate = useNavigate();
     setEmployee((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-  await api.post(`/api/emp/add`, employee, {
-          headers: { 'Content-Type': 'application/json' },
-        });
-     
-    console.log("Employee Data:", employee);
-    alert("Employee Added!");
-    navigate("/");
-    
-    setEmployee({ name: "", email: "", position: "", salary: "" });
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+if (!gmailRegex.test(employee.email)) {
+  alert("Please enter a valid Gmail address.");
+  return;
+}
+  const salary = Number(employee.salary);
+  if (isNaN(salary) || salary <= 0) {
+    alert("Please enter a valid salary greater than 0.");
+    return;
+  }
+
+  try {
+    const response = await api.post(`/api/emp/add`, employee, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.data.success) {
+      alert("Employee Added!");
+      navigate("/");
+      setEmployee({ name: "", email: "", position: "", salary: "" });
+    } else {
+      alert(response.data.message || "Failed to add employee.");
+    }
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.message) {
+      alert(err.response.data.message); 
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  }
+};
 
 
    

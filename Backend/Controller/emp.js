@@ -6,7 +6,14 @@ export const addEmp = async(req,res)=>{
     try{
    const {name,email,position,salary} = req.body;
    if(!name || !email || !position || !salary) return res.status(400).json({message:"all fields are required",success:false});
-    const data = await Emp.create({
+   let existing = await Emp.findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        message: "Employee already exists, try a different email!",
+        success: false,
+      });
+    }
+      const data = await Emp.create({
         name,
         email,
         position,
@@ -29,3 +36,28 @@ export const getEmp = async(req,res)=>{
         res.status(500).json({message:"failed to fetch emp data",success:false});
     }
 }
+// delete employee by id
+export const deleteEmp = async (req, res) => {
+  try {
+    const { id } = req.params; // get id from URL
+    const deletedEmp = await Emp.findByIdAndDelete(id);
+
+    if (!deletedEmp) {
+      return res.status(404).json({
+        message: "Employee not found",
+        success: false,
+      });
+    }
+
+    res.status(200).json({
+      message: "Employee deleted successfully",
+      success: true,
+      data: deletedEmp,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Failed to delete employee",
+      success: false,
+    });
+  }
+};

@@ -43,3 +43,16 @@ h2 {
 .employee-item strong {
   color: #000;
 }
+.delete-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
